@@ -1,0 +1,133 @@
+:root{
+  --bg: #f7f8fb;
+  --card-bg: #ffffff;
+  --text: #0f1724;
+  --muted: #566178;
+  --accent: #bb8b2b; /* warm gold */
+  --btn-bg: #f1f4ff;
+  --btn-hover: #fbeccf;
+  --shadow: 0 10px 30px rgba(16,24,40,0.08);
+}
+
+[data-theme="dark"]{
+  --bg: #071026;
+  --card-bg: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  --text: #e6eef8;
+  --muted: #9fb0d4;
+  --accent: #f4c865;
+  --btn-bg: rgba(255,255,255,0.03);
+  --btn-hover: rgba(255,255,255,0.04);
+  --shadow: 0 8px 26px rgba(2,6,23,0.7);
+}
+
+/* Reset & layout */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:28px 18px;
+}
+
+/* Page container */
+.page{width:100%;max-width:520px}
+
+/* Card */
+.card{
+  background:var(--card-bg);
+  border-radius:16px;
+  padding:22px;
+  text-align:center;
+  box-shadow:var(--shadow);
+  border:1px solid rgba(15,23,36,0.04);
+  position:relative;
+  overflow:hidden;
+}
+
+/* Top row */
+.top-row{display:flex;align-items:center;justify-content:space-between}
+.brand-logo{height:44px;object-fit:contain}
+
+/* Theme toggle */
+.theme-toggle{
+  background:transparent;border:0;padding:8px;border-radius:10px;color:var(--muted);cursor:pointer;
+  transition:transform .18s ease, background .18s ease;
+}
+.theme-toggle:hover{transform:translateY(-3px)}
+.icon-sun{width:18px;height:18px;display:inline-block}
+.icon-moon{width:18px;height:18px;display:none}
+[data-theme="dark"] .icon-sun{display:none}
+[data-theme="dark"] .icon-moon{display:inline-block}
+
+/* Avatar */
+.avatar-wrap{display:flex;justify-content:center;margin-top:12px}
+.avatar{
+  width:108px;height:108px;object-fit:cover;border-radius:999px;
+  border:3px solid rgba(0,0,0,0.06);
+  box-shadow:0 8px 26px rgba(16,24,40,0.06);
+  transition:transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
+}
+.avatar:hover{transform:translateY(-6px) scale(1.02)}
+
+/* Name & Bio */
+.name{font-size:20px;margin:12px 0 6px;font-weight:700}
+.bio{font-size:13px;color:var(--muted);margin:0 0 18px;line-height:1.45}
+
+/* Links stack */
+.links{display:flex;flex-direction:column;gap:12px;margin-bottom:18px}
+.btn{
+  display:inline-flex;align-items:center;gap:12px;justify-content:center;width:100%;
+  border-radius:12px;padding:12px 16px;font-weight:700;color:var(--text);
+  text-decoration:none;background:var(--btn-bg);border:1px solid rgba(15,23,36,0.04);
+  transition:transform .18s ease, box-shadow .18s ease, background .18s;
+  box-shadow:none;
+}
+.btn .btn-icon{width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:16px}
+.btn:focus{outline:3px solid rgba(187,139,43,0.14);outline-offset:2px}
+.btn:hover{
+  transform:translateY(-5px);
+  background:var(--btn-hover);
+  box-shadow:0 14px 40px rgba(16,24,40,0.06);
+}
+
+/* primary CTA accent */
+.btn-cta{
+  background: linear-gradient(90deg, rgba(187,139,43,0.12), rgba(187,139,43,0.06));
+  border:1px solid rgba(187,139,43,0.14);
+  color:var(--text);
+}
+
+/* Social icons */
+.social{display:flex;gap:12px;justify-content:center;margin-bottom:8px}
+.social-link{
+  display:inline-flex;width:44px;height:44px;border-radius:10px;align-items:center;justify-content:center;
+  color:var(--muted);text-decoration:none;background:transparent;
+  transition:transform .16s ease, background .16s ease, color .16s ease;
+}
+.social-link svg{width:18px;height:18px}
+.social-link:hover{
+  transform:translateY(-4px) scale(1.03);
+  color:var(--accent);
+  background:rgba(0,0,0,0.04);
+}
+
+/* Meta */
+.meta{margin-top:8px;color:var(--muted);font-size:12px}
+
+/* Desktop tweaks */
+@media (min-width:720px){
+  .card{padding:28px}
+  .avatar{width:124px;height:124px}
+  .name{font-size:22px}
+  .btn{padding:14px 18px}
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .avatar, .btn, .theme-toggle, .social-link{transition:none}
+}
